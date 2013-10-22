@@ -1,1 +1,196 @@
-body {}
+/* CSS Reset section */
+html {
+	width:100%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	font-size: 100.01%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+@font-face {
+        font-family: 'Politica';
+        src: url('Politica.ttf');
+        font-weight: 500;
+        font-style: normal;
+}
+@font-face {
+        font-family: 'FSerProB-BookItalic';
+        src: url('FSerProB-BookItalic.otf');
+        font-weight: 500;
+        font-style: normal;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+	border: 0;
+}
+a, a:focus, a img, a img:focus {
+	border: 0 none;
+}
+a, a img, textarea, input {
+	outline: 0 none;
+}
+a:focus {
+	outline: thin dotted;
+}
+a {
+	color: #00f;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	margin: 0;
+}
+p {
+	margin: 0;
+}
+dl, dt, dd {
+	margin: 0;
+}
+textarea {
+	overflow: auto;
+}
+/* Wrapper section */
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.header {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 44px;
+}
+.header_logo {
+    display: block;
+    width: 187px;
+    margin: 0 auto;
+}
+.header_logo__text{
+    width: 350px;
+    color:  #808080;
+    text-align: center;
+    font: 35px bold 'FSerProB-BookItalic';
+    padding-top: 25px;
+    padding-bottom: 11px;
+    margin-left:  29px;
+    border-bottom: 2px solid #ff6a00;
+}
+.contant_maintext{
+    width: 796px;
+	margin: auto;
+    font: 46px normal 'Politica';
+    color: #804000;
+    padding-top:  34px;
+    text-align: center;
+}
+.horizchert{
+    width:  448px;
+    margin: 0 auto;
+    border-bottom: 2px solid #ff6a00;
+    margin-top: 25px;
+}
+.contant_feedback{
+    width: 800px;
+	margin: auto;
+    font: 37px normal 'Politica';
+    color: #804000;
+    text-align: center;
+    margin-top: 30px;
+}
+.contant_feedback__phone{
+    margin-right: 15px;
+}
+.contant__kolonki_address {
+	width: 880px;
+	margin: 0 auto;
+    padding-top: 50px;
+}
+.contant__kolonki_block{
+    height: 200px;
+}
+.kol1{
+    display:inline-block;
+    vertical-align:top;
+    width:155px;
+    margin-left: 70px;    
+}
+.kol2{
+    display:inline-block;
+    vertical-align:top;
+    width:180px;
+    margin-left: 127px;
+}
+.kol3{
+    display:inline-block;
+    vertical-align:top;
+    width:217px;
+    margin-left: 92px;
+}
+.contant__kolonki_block_text{
+    font-size: 15px;
+    font-family: Verdana;
+    margin-top: 28px;
+}
+.kol1 .contant__kolonki_block_img{
+    text-align: center;
+}
+.kol2 .contant__kolonki_block_img{
+    text-align: center;
+}
+.kol3 .contant__kolonki_block_img{
+    text-align: center;
+}
+
+
+.contant__kolonki_feedback{
+    text-align: center;
+    margin-top: 37px;
+}
+
+.koll1{
+	font-family: Verdana;
+	font-size: 15px;
+	text-align: left;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 106px;
+}
+
+.koll2{
+	font-family: Verdana;
+	font-size: 15px;
+	text-align: left;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.a-niz{
+	font-style: italic;
+	color: #ff6600;
+	text-decoration: none;
+	padding-bottom: 7px;
+	border-bottom: 2px #ff6600 solid;
+}
