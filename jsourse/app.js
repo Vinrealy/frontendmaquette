@@ -25,6 +25,7 @@ var app = (function(window, document){
     drawctx: function(callback){ /* drawing elements on canvas */
       app.clearctx();
       requestAnimFrame(callback);
-    }
+    },
+    ctxel
   };
 })(window, document);
