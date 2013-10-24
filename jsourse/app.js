@@ -16,13 +16,13 @@ var app = (function(window, document){
   canvasel.height = document.documentElement.clientHeight;
   var ctxel = canvasel.getContext('2d');
   return {
-    initctx: function(){
+    initctx: function(){ /* initialization */
       document.body.appendChild(canvasel);
     },
-    clearctx: function(){
+    clearctx: function(){ /* clear holst canvas*/
       ctxel.clearRect(0, 0, canvasel.width, canvasel.height);
     },
-    drawctx: function(callback){
+    drawctx: function(callback){ /* drawing elements on canvas */
       app.clearctx();
       requestAnimFrame(callback);
     }
