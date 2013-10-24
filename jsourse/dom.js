@@ -1,3 +1,3 @@
 (function(){
-  app.init();
+  app.initctx();
 })();
