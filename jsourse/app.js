@@ -1,4 +1,15 @@
 var app = (function(window, document){
+  
+  window.requestAnimFrame =
+  window.requestAnimationFrame       ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame    ||
+  window.oRequestAnimationFrame      ||
+  window.msRequestAnimationFrame     ||
+  function(callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+  
   var canvasel = document.createElement('canvas');
   canvasel.style.position = 'absolute';
   canvasel.style.top = '0px';
@@ -7,13 +18,18 @@ var app = (function(window, document){
   canvasel.height = document.documentElement.clientHeight;
   document.body.appendChild(canvasel);
   var ctxel = canvasel.getContext('2d');
+  
+  var mainstack = [];
   return {
     initctx: function(){
       document.body.appendChild(canvasel);
     },
     clearctx: function(){
-      ctxel.width = 0;
-      ctxel.width = document.documentElement.clientWidth;
+      ctxel.clearRect(0, 0, canvasel.width, canvasel.height);
+    },
+    drawctx: function(callback){
+      clearctx();
+      requestAnimFrame(callback);
     }
   };
 })(window, document);
