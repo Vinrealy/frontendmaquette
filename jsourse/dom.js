@@ -1,4 +1,7 @@
 (function(){
+  var mainstack = [];
   app.initctx();
-  app.drawctx();
+  app.drawctx(mainstack);
+  
+  
 })();
