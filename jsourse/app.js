@@ -1,5 +1,5 @@
 var app = (function(window, document){
-  window.requestAnimFrame =
+  var requestAnimFrame =
   window.requestAnimationFrame       ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame    ||
