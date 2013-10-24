@@ -16,7 +16,6 @@ var app = (function(window, document){
   canvasel.style.left = '0px';
   canvasel.width = document.documentElement.clientWidth;
   canvasel.height = document.documentElement.clientHeight;
-  document.body.appendChild(canvasel);
   var ctxel = canvasel.getContext('2d');
   
   var mainstack = [];
