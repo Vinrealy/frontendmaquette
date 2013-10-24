@@ -6,6 +6,14 @@ var app = (function(window, document){
   canvasel.width = document.documentElement.clientWidth;
   canvasel.height = document.documentElement.clientHeight;
   document.body.appendChild(canvasel);
-  var ctsel = canvasel.getContext('2d');
-  return {};
+  var ctxel = canvasel.getContext('2d');
+  return {
+    initctx: function(){
+      document.body.appendChild(canvasel);
+    },
+    clearctx: function(){
+      ctxel.width = 0;
+      ctxel.width = document.documentElement.clientWidth;
+    }
+  };
 })(window, document);
