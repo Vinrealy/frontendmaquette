@@ -27,7 +27,7 @@ var app = (function(window, document){
       ctxel.clearRect(0, 0, canvasel.width, canvasel.height);
     },
     drawctx: function(callback){
-      clearctx();
+      app.clearctx();
       requestAnimFrame(callback);
     }
   };
