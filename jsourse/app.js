@@ -1,5 +1,4 @@
 var app = (function(window, document){
-  
   window.requestAnimFrame =
   window.requestAnimationFrame       ||
   window.webkitRequestAnimationFrame ||
@@ -9,7 +8,6 @@ var app = (function(window, document){
   function(callback) {
     window.setTimeout(callback, 1000 / 60);
   };
-  
   var canvasel = document.createElement('canvas');
   canvasel.style.position = 'absolute';
   canvasel.style.top = '0px';
@@ -17,8 +15,6 @@ var app = (function(window, document){
   canvasel.width = document.documentElement.clientWidth;
   canvasel.height = document.documentElement.clientHeight;
   var ctxel = canvasel.getContext('2d');
-  
-  var mainstack = [];
   return {
     initctx: function(){
       document.body.appendChild(canvasel);
