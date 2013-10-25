@@ -30,7 +30,7 @@ var app = (function(window, document){
       }
       drawctx(app.draw);
     },
-    kvad: function(x, y){
+    kvad: function(x, y, x1, y1){
       ctxel.fillRect(x, y, x + x1, y + y1);
     }
   };
