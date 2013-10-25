@@ -1,5 +1,15 @@
 var app = (function(window, document){
-  var requestAnimFrame =
+  var canvasel = document.createElement('canvas');
+  canvasel.style.position = 'absolute';
+  canvasel.style.top = '0px';
+  canvasel.style.left = '0px';
+  canvasel.width = document.documentElement.clientWidth;
+  canvasel.height = document.documentElement.clientHeight;
+  var ctxel = canvasel.getContext('2d');
+  
+  var initctx = function() {document.body.appendChild(canvasel);}
+  var clearctx = function() {ctxel.clearRect(0, 0, canvasel.width, canvasel.height);}
+  var drawctx =
   window.requestAnimationFrame       ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame    ||
@@ -8,24 +18,12 @@ var app = (function(window, document){
   function(callback) {
     window.setTimeout(callback, 1000 / 60);
   };
-  var canvasel = document.createElement('canvas');
-  canvasel.style.position = 'absolute';
-  canvasel.style.top = '0px';
-  canvasel.style.left = '0px';
-  canvasel.width = document.documentElement.clientWidth;
-  canvasel.height = document.documentElement.clientHeight;
-  var ctxel = canvasel.getContext('2d');
+  
+  
   return {
-    initctx: function(){ /* initialization */
-      document.body.appendChild(canvasel);
-    },
-    clearctx: function(){ /* clear holst canvas*/
-      ctxel.clearRect(0, 0, canvasel.width, canvasel.height);
-    },
-    drawctx: function(callback){ /* drawing elements on canvas */
-      app.clearctx();
-      requestAnimFrame(callback);
-    },
-    ctxel
+    draw: function(callback){ /* drawing elements on canvas */
+      clearctx();
+      drawctx(callback);
+    }
   };
 })(window, document);
