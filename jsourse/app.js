@@ -23,11 +23,7 @@ var app = (function(window, document){
     },
     draw: function(callback){ /* drawing elements on canvas */
       clearctx();
-      if(callback){
-        for(var i = 0; i < callback.length; i++){
-          callback[i];
-        }
-      }
+      
       drawctx(app.draw);
     },
     kvad: function(x, y, x1, y1){
