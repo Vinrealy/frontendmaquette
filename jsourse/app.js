@@ -21,6 +21,9 @@ var app = (function(window, document){
   
   
   return {
+    init: function(){
+      initctx();
+    },
     draw: function(callback){ /* drawing elements on canvas */
       clearctx();
       drawctx(callback);
