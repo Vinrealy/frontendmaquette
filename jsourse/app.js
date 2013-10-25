@@ -25,7 +25,7 @@ var app = (function(window, document){
       clearctx();
       if(callback){
         for(var i = 0; i < callback.length; i++){
-          callback[i]();
+          callback[i];
         }
       }
       drawctx(app.draw);
