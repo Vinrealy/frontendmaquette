@@ -31,7 +31,7 @@ var app = (function(window, document){
           callback[i]();
         }
       }
-      drawctx(draw);
+      drawctx(app.draw);
     }
   };
 })(window, document);
