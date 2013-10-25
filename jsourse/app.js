@@ -29,6 +29,9 @@ var app = (function(window, document){
         }
       }
       drawctx(app.draw);
+    },
+    kvad: function(x, y){
+      ctxel.fillRect(x, y, x + x1, y + y1);
     }
   };
 })(window, document);
