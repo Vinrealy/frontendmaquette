@@ -26,7 +26,10 @@ var app = (function(window, document){
     },
     draw: function(callback){ /* drawing elements on canvas */
       clearctx();
-      drawctx(callback);
+      for(var i = 0; i < callback.length; i++){
+        callback[i]();
+      }
+      drawctx();
     }
   };
 })(window, document);
