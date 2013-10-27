@@ -80,9 +80,10 @@ textarea {
 }
 /* content */
 .container {
-        position: relative;
+    position: relative;
     width: 230px;
-        margin: 80px auto;
+    margin: 0px auto;
+    padding-top: 80px;
 }
 .block_popup {
     background-color: rgb(255,255,255);
@@ -139,16 +140,15 @@ textarea {
     color:  rgb(0,0,0);
 }
 .block_registr {
+    display:  inline-block;
     background-color: #808080;
     width:  100%;
     height: 35px;
-    text-align: center;
     padding-top: 20px;
-        padding-bottom: 3px;
-        margin-top: 5px;
-}
-.block_registr__link {
-    color:  rgb(255,255,255);
+    padding-bottom: 3px;
+    margin-top: 5px;
+    text-align: center;
+    color: rgb(255,255,255);
     font: 14px bold sans-serif;
     text-shadow: 0 1px 3px rgb(0,0,0);
     text-decoration: none;
