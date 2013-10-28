@@ -223,15 +223,19 @@ body {
 /**/
 .secondary-navigationlol {
     font-size: 13px;  
-    border-bottom-style: solid;
     background: #e0e0e0 url("../img/boxbar-background.png") top;
+    /*
+    border-bottom-style: solid;
     border-bottom-width: 0px;
     -moz-border-radius-topleft: 6px;
     -webkit-border-top-left-radius: 6px;
      border-top-left-radius: 6px;
     -moz-border-radius-topright: 6px;
     -webkit-border-top-right-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-right-radius: 6px;*/
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 /**/
 .secondary-navigation ul li a {
