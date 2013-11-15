@@ -172,13 +172,13 @@ function process() {
   cc.putImageData(bit, 0, 0);
   faidout();
   count++;
-  if (count === FPS){
+  /*if (count === FPS){
     var now = Date.now();
     var _f = 1000 / ((now - last) / count);
     count = 0;
     info.innerHTML = 'FPS '+_f.toFixed(2) +' : ' + dispType[nowDisp];
     last = Date.now();
-  }
+  }*/
 }
 
 function particle() {
@@ -202,7 +202,7 @@ function timeDraw() {
 
   return timeTxt;
 }
-
+/*
 function mouseClick() {
   if (nowDisp === CLOCK_VIEW){
     nowDisp = TEXT_VIEW;
@@ -211,7 +211,7 @@ function mouseClick() {
   }
   updateState = true;
   return false;
-}
+}*/
 
 function drawDotLine(x, y, px, py) {
   var _x = (x > px ? 1 : -1) * (x - px);
