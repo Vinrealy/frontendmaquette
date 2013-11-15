@@ -15,7 +15,7 @@ var info = document.getElementById("info");
 
 ct.width  = canvas.width  = _width;
 ct.height = canvas.height = _height;
-canvas.onclick = mouseClick;
+//canvas.onclick = mouseClick;
 
 var cc = canvas.getContext("2d");
 
@@ -92,7 +92,7 @@ function process() {
       ctx.textBaseline = "top";
       ctx.fillStyle = '#fff';
       ctx.fillText(text, setX, setY);
-    } else if(nowDisp === TEXT_VIEW) {
+    }/* else if(nowDisp === TEXT_VIEW) {
       
       textSize = 40;
       var a = Math.floor(30*Math.random());
@@ -111,7 +111,7 @@ function process() {
       ctx.textBaseline = "top";
       ctx.fillStyle = '#fff';
       ctx.fillText(text, setX, setY);
-  }
+  }*/
   updateState = false;
     textData = ctx.getImageData(setX, setY, textWidth, textHeight).data;
   }
@@ -176,7 +176,7 @@ function process() {
     var now = Date.now();
     var _f = 1000 / ((now - last) / count);
     count = 0;
-    info.innerHTML = 'FPS '+_f.toFixed(2) +'<br>表示タイプ : ' + dispType[nowDisp];
+    info.innerHTML = 'FPS '+_f.toFixed(2) +' : ' + dispType[nowDisp];
     last = Date.now();
   }
 }
