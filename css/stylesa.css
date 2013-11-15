@@ -1,3 +1,17 @@
-body {
-  overflow: hidden;
+html, body{
+  margin:0px;
+  padding:0px;
+  background: #000;
+}
+canvas{
+  background: #000;
+	margin: 50px auto;
+	display: block;
+}
+#info{
+  position:absolute;
+  top:5px;
+  left:5px;
+  color:#fff;
+  font-size:small;
 }
