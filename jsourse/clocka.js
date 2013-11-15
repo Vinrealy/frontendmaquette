@@ -11,17 +11,11 @@ var ctx = ct.getContext('2d');
 ctx.fillStyle = '#fff';
 
 var canvas = document.getElementById("canvas");
-//var info = document.getElementById("info");
 
 ct.width  = canvas.width  = _width;
 ct.height = canvas.height = _height;
-//canvas.onclick = mouseClick;
 
 var cc = canvas.getContext("2d");
-
- /*var r = Math.floor(256*Math.random());
- var g = Math.floor(256*Math.random());
- var b = Math.floor(256*Math.random());*/
 
 cc.fillStyle = 'rgba(255,255,255,0.01)';
 
@@ -92,26 +86,8 @@ function process() {
       ctx.textBaseline = "top";
       ctx.fillStyle = '#fff';
       ctx.fillText(text, setX, setY);
-    }/* else if(nowDisp === TEXT_VIEW) {
-      
-      textSize = 40;
-      var a = Math.floor(30*Math.random());
-      var score=["(^^)","∑(*ﾟｪﾟ*)","( ﾟ∀ﾟ)・;'.、","∑(ﾟ◇ﾟﾉ)ﾉ","(*ﾟДﾟ)","(*´∀｀*)","(｀ω´)","(｀・ω・´)","(*ﾉｪﾟ)b","(σﾟ∀ﾟ)σ","(ｏ'∀'人)",
-                      "(´；д；｀)","｡ﾟヽ(ﾟ｀Д´ﾟ)ﾉﾟ｡","・ﾟ・(*ﾉДﾉ)・ﾟ・","┐(´д｀)┌","(´・д・｀)","(´-д-)-3","((( ；ﾟДﾟ)))","( ﾟωﾟ；)",
-                      "((´∀｀*))","｡ﾟ(ﾟ＾∀＾ﾟ)ﾟ｡","(* 'ω')ﾉ","(*´ー｀)ﾉ","(´ω｀)ﾉｼ","o(^-^)o","(^_-)-☆","(*^-^*)","(-_-)","(ToT)","(・_・)","(>_<)","m(__)m"
-                      ];
-      //text = '(^^) lucky';
-      text=score[a];
-      textWidth = textSize * text.length;
-      textHeight = textSize;
-      setX = _width/2 - textSize * text.length/2 + 80;
-      setY = _height/2 - textSize/2;
-
-      ctx.font = textSize+"px sans-serif";
-      ctx.textBaseline = "top";
-      ctx.fillStyle = '#fff';
-      ctx.fillText(text, setX, setY);
-  }*/
+    }
+    
   updateState = false;
     textData = ctx.getImageData(setX, setY, textWidth, textHeight).data;
   }
@@ -172,13 +148,6 @@ function process() {
   cc.putImageData(bit, 0, 0);
   faidout();
   count++;
-  /*if (count === FPS){
-    var now = Date.now();
-    var _f = 1000 / ((now - last) / count);
-    count = 0;
-    info.innerHTML = 'FPS '+_f.toFixed(2) +' : ' + dispType[nowDisp];
-    last = Date.now();
-  }*/
 }
 
 function particle() {
@@ -202,16 +171,6 @@ function timeDraw() {
 
   return timeTxt;
 }
-/*
-function mouseClick() {
-  if (nowDisp === CLOCK_VIEW){
-    nowDisp = TEXT_VIEW;
-  } else {
-    nowDisp = CLOCK_VIEW;
-  }
-  updateState = true;
-  return false;
-}*/
 
 function drawDotLine(x, y, px, py) {
   var _x = (x > px ? 1 : -1) * (x - px);
