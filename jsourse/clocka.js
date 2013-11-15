@@ -11,7 +11,7 @@ var ctx = ct.getContext('2d');
 ctx.fillStyle = '#fff';
 
 var canvas = document.getElementById("canvas");
-var info = document.getElementById("info");
+//var info = document.getElementById("info");
 
 ct.width  = canvas.width  = _width;
 ct.height = canvas.height = _height;
