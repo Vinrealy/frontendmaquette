@@ -62,7 +62,19 @@ while(num){
   particles[num] = new particle();
 }
 var last = Date.now(), count = 0;
-setInterval(process, 1000/FPS);
+//###########################
+window.requestAnimFrame =
+  window.requestAnimationFrame       ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame    ||
+  window.oRequestAnimationFrame      ||
+  window.msRequestAnimationFrame     ||
+  function(callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+requestAnimFrame(process);
+//###########################
+//setInterval(process, 1000/FPS);
 
 function process() {
   var dispType = ['時計', '顔文字'];
