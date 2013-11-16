@@ -63,7 +63,7 @@ while(num){
 }
 var last = Date.now(), count = 0;
 //###########################
-window.requestAnimFrame =
+/*window.requestAnimFrame =
   window.requestAnimationFrame       ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame    ||
@@ -72,9 +72,9 @@ window.requestAnimFrame =
   function(callback) {
     window.setTimeout(callback, 1000 / 60);
   };
-requestAnimFrame(process);
+requestAnimFrame(process);*/
 //###########################
-//setInterval(process, 1000/FPS);
+setInterval(process, 1000/FPS);
 
 function process() {
   var dispType = ['時計', '顔文字'];
