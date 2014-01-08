@@ -37,14 +37,14 @@
         window.mozRequestAnimationFrame    ||
         window.oRequestAnimationFrame      ||
         window.msRequestAnimationFrame     ||
-        function(){window.setTimeout(arguments.callee, 1000 / 60);};
+        function(callback){window.setTimeout(callback, 1000 / 60);};
       })();
       
       /**/
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function() {engine.clean();requestAnimFrame();},
+      redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
       ala: function(x, y, x1, y1) {console.log('ala');},
       ili: function() {olo();},
       fullrun: function() {fullScreenRun();console.log('fSR!');}/*,
