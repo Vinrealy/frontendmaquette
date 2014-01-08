@@ -24,13 +24,13 @@
       canvas.style.height = window.innerHeight+"px";}, false);
     var olo = function (){console.log('olo');}
     var fullScreenRun = function (element){
-      if(element.requestFullscreen) {element.requestFullscreen();}
-      else if(element.webkitrequestFullscreen) {element.webkitRequestFullscreen();}
-      else if(element.mozRequestFullscreen) {element.mozRequestFullScreen();}}
+      if(element.requestFullscreen) {element.requestFullscreen();console.log('fSR: el');}
+      else if(element.webkitrequestFullscreen) {element.webkitRequestFullscreen();console.log('fSR: wk');}
+      else if(element.mozRequestFullscreen) {element.mozRequestFullScreen();console.log('fSR: mz');}}
     var fullSreenCancel = function (){
-      if(document.requestFullscreen) {document.requestFullscreen();}
-      else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();}
-      else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}}
+      if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
+      else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
+      else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}console.log('fSC: mz');}
 		/*var drawctx =
 		window.requestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
@@ -46,7 +46,7 @@
       redraw: function() {engine.clean();},
       ala: function(x, y, x1, y1) {console.log('ala');},
       ili: function() {olo();},
-      fullrun: function() {fullScreenRun(canvas);},
+      fullrun: function() {fullScreenRun(canvas);console.log('fSR!');},
       fullcancel: function() {fullScreenCancel();}
     };
   })(window, document);
