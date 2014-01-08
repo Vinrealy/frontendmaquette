@@ -22,7 +22,15 @@
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
       canvas.style.height = window.innerHeight+"px";}, false);
-    var olo = function () { console.log('olo'); }
+    var olo = function (){console.log('olo');}
+    var fullScreenRun = function (element){
+      if(element.requestFullscreen) {element.requestFullscreen();}
+      else if(element.webkitrequestFullscreen) {element.webkitRequestFullscreen();}
+      else if(element.mozRequestFullscreen) {element.mozRequestFullScreen();}}
+    var fullSreenCancel = function (){
+      if(document.requestFullscreen) {document.requestFullscreen();}
+      else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();}
+      else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}}
 		/*var drawctx =
 		window.requestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
@@ -33,13 +41,16 @@
 		window.setTimeout(callback, 1000 / 60);
 		};*/
     return {
-      init: function(){document.body.appendChild(canvas);},
+      init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function(){engine.clean();},
-      ala: function (x, y, x1, y1) {console.log('ala');},
-      ili: function () {olo();}
+      redraw: function() {engine.clean();},
+      ala: function(x, y, x1, y1) {console.log('ala');},
+      ili: function() {olo();},
+      fullrun: function() {fullScreenRun(canvas);},
+      fullcancel: function() {fullScreenCancel();}
     };
   })(window, document);
   engine.init();
   engine.redraw();
+  engine.fullrun();
 })();
