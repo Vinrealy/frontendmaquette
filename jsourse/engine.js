@@ -23,10 +23,10 @@
       canvas.style.width = document.documentElement.offsetWidth+"px";
       canvas.style.height = window.innerHeight+"px";}, false);
     var olo = function (){console.log('olo');}
-    var fullScreenRun = function (element){
-      if(element.requestFullscreen) {element.requestFullscreen();console.log('fSR: el');}
-      else if(element.webkitrequestFullscreen) {element.webkitRequestFullscreen();console.log('fSR: wk');}
-      else if(element.mozRequestFullscreen) {element.mozRequestFullScreen();console.log('fSR: mz');}}
+    var fullScreenRun = function (){
+      if(canvas.requestFullscreen) {canvas.requestFullscreen();console.log('fSR: el');}
+      else if(canvas.webkitrequestFullscreen) {canvas.webkitRequestFullscreen();console.log('fSR: wk');}
+      else if(canvas.mozRequestFullscreen) {canvas.mozRequestFullScreen();console.log('fSR: mz');}}
     var fullSreenCancel = function (){
       if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
       else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
