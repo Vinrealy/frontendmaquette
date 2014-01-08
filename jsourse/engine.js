@@ -37,7 +37,7 @@
       window.mozRequestAnimationFrame ||
       window.oRequestAnimationFrame ||
       window.msRequestAnimationFrame ||
-      function (){window.setTimeout(arguments.callee, 1000 / 60);};
+      function (callback){window.setTimeout(callback, 1000 / 60);};
       /**/
     return {
       init: function() {document.body.appendChild(canvas);},
