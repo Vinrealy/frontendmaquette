@@ -46,8 +46,8 @@
       redraw: function() {engine.clean();},
       ala: function(x, y, x1, y1) {console.log('ala');},
       ili: function() {olo();},
-      fullrun: function() {fullScreenRun(canvas);console.log('fSR!');},
-      fullcancel: function() {fullScreenCancel();}
+      fullrun: function() {fullScreenRun();console.log('fSR!');}/*,
+      fullcancel: function() {fullScreenCancel();}*/
     };
   })(window, document);
   engine.init();
