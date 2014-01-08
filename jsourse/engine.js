@@ -31,19 +31,18 @@
       if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
       else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
       else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}console.log('fSC: mz');}
-		/*var drawctx =
-		window.requestAnimationFrame ||
-		window.webkitRequestAnimationFrame ||
-		window.mozRequestAnimationFrame ||
-		window.oRequestAnimationFrame ||
-		window.msRequestAnimationFrame ||
-		function (callback) {
-		window.setTimeout(callback, 1000 / 60);
-		};*/
+    var drawctx =
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function (){window.setTimeout(arguments.callee, 1000 / 60);};
+      /**/
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function() {engine.clean();},
+      redraw: function() {engine.clean();drawctx();},
       ala: function(x, y, x1, y1) {console.log('ala');},
       ili: function() {olo();},
       fullrun: function() {fullScreenRun();console.log('fSR!');}/*,
