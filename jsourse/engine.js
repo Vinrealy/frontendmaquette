@@ -31,7 +31,7 @@
       if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
       else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
       else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}console.log('fSC: mz');}
-    var requestAnimFrame = (function(){
+    var requestAnimFrame = (function(){console.log('l');
       return window.requestAnimationFrame  ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame    ||
