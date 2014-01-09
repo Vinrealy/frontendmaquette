@@ -54,18 +54,18 @@
       var array = [];
       for (var key in object) {array.push(object[key]);}
       return array;}  
-    var Shape = function(draw, parameters) { //, в качестве параметров функция draw и параметры parameters
+    var Shape = function(draw, par) { //, в качестве параметров функция draw и параметры parameters
       var shapeInstance = this;
-      this.get = function(key) {return parameters[key];} //получение праметров
+      this.get = function(key) {return par[key];} //получение праметров
       this.set = function(values) { //установка параметров
-          for (var key in parameters) {
-              if (!!values[key]) {parameters[key] = values[key];}}} //если values не соответствует parameters меняем их
+          for (var key in par) {
+              if (!!values[key]) {par[key] = values[key];}}} //если values не соответствует parameters меняем их
       var ActionHandler = function(values, delay, callback) {
           var relativeTimestamp = new Date().getTime(); //получаем время когда произошло событие
           var endTimestamp = relativeTimestamp + delay; //сколько времени должно событие происходить
           var offsets = {};
-          for (var key in parameters) {
-              if (!!values[key]) {offsets[key] = values[key] - parameters[key];} //если values и parameters не равны количественно то высчитывает их разницу
+          for (var key in par) {
+              if (!!values[key]) {offsets[key] = values[key] - par[key];} //если values и parameters не равны количественно то высчитывает их разницу
               else {offsets[key] = 0;}} //иначе ничего не происходит
           this.handle = function() {
               var currentTimestamp = new Date().getTime(); //получаем время когда произошло событие
@@ -77,7 +77,7 @@
                   var offset = 0;
                   for (var key in offsets) {
                       offset = offsets[key] * offsetRate;
-                      parameters[key] += offset;
+                      par[key] += offset;
                       offsets[key] -= offset;}}
               else if (callback instanceof Function) { //если callback функция то
                   callback.call(shapeInstance);
@@ -132,11 +132,11 @@
       var removeShape = function() { //удаление
           if (activeTargets[eventHandler.id] !== undefined) {delete activeTargets[eventHandler.id];}}
       var updateActiveTargets = function() {
-          if (context.isPointInPath(event.mouseX, event.mouseY)) {appendShape();}
+          if (ctx.isPointInPath(event.mouseX, event.mouseY)) {appendShape();}
           else {removeShape();}}
       this.draw = function() { //отрисовка, 
           if (actionHandler instanceof ActionHandler && actionHandler.handle()) {actionHandler = null;}
-          draw.apply(context, toArray(parameters));
+          draw.apply(ctx, toArray(par));
           updateActiveTargets();}}
       var pastTarget = null;
   var updateTarget = function() {
@@ -193,7 +193,7 @@
       redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
       addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
-        if(!(par instanceof Object)) {parameters = {}}
+        if(!(par instanceof Object)) {par = {}}
         var shape = new Shape(draw, par); //создание новой фигуры
         stack.push(shape); //добавление в массив объекты фигур фигур
         return shape;
