@@ -14,12 +14,21 @@
       canvas.width = document.documentElement.clientWidth;
       canvas.height = document.documentElement.clientHeight;
       var ctx = canvas.getContext('2d');}
+      /************************/
+    var event = {mouseX: 0, mouseY: 0, mouseClicked: false, mouseButton: 0, currentTarget: null, relatedTarget: null} //флаги координат мыши, кликали или нет, какой кнопкой мыши нажали, текущего элемента, связанных элементов
     window.addEventListener('mousemove', function(e) { //событие перетаскивание мыши, провека координат мыши и текущей ли элемент, отсылка координат
-      }, false);
+      var x = e.clientX - e.currentTarget.offsetLeft + window.pageXOffset; 
+      var y = e.clientY - e.currentTarget.offsetTop + window.pageYOffset;
+      if (event.currentTarget !== null && (x - event.mouseX !== 0 || y - event.mouseY !== 0)) {event.currentTarget.isMoved = true;}
+      event.mouseX = x;
+      event.mouseY = y;}, false);
     window.addEventListener('mousedown', function(e) { //событие нажатия любой кнопки мыши, отсылка номера кнопки
-      }, false);
+      event.mouseClicked = true;
+      event.mouseButton = e.button;}, false);
     window.addEventListener('mouseup', function(e) { //событие отпуска любой кнопки мыши, отсылка номера кнопки
-      }, false);
+      event.mouseClicked = false;
+      event.mouseButton = e.button;}, false);
+      /*********************/
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
       canvas.style.height = window.innerHeight+"px";}, false);
@@ -39,8 +48,97 @@
         window.msRequestAnimationFrame     ||
         function(callback){window.setTimeout(callback, 1000 / 60);};
       })();
-    var Shape = function(draw, par){}
-      /**/
+      /*********************/
+    var activeTargets = {}
+    var toArray = function(object) {
+      var array = [];
+      for (var key in object) {array.push(object[key]);}
+      return array;}  
+    var Shape = function(draw, parameters) { //, в качестве параметров функция draw и параметры parameters
+      var shapeInstance = this;
+      this.get = function(key) {return parameters[key];} //получение праметров
+      this.set = function(values) { //установка параметров
+          for (var key in parameters) {
+              if (!!values[key]) {parameters[key] = values[key];}}} //если values не соответствует parameters меняем их
+      var ActionHandler = function(values, delay, callback) {
+          var relativeTimestamp = new Date().getTime(); //получаем время когда произошло событие
+          var endTimestamp = relativeTimestamp + delay; //сколько времени должно событие происходить
+          var offsets = {};
+          for (var key in parameters) {
+              if (!!values[key]) {offsets[key] = values[key] - parameters[key];} //если values и parameters не равны количественно то высчитывает их разницу
+              else {offsets[key] = 0;}} //иначе ничего не происходит
+          this.handle = function() {
+              var currentTimestamp = new Date().getTime(); //получаем время когда произошло событие
+              if (currentTimestamp <= endTimestamp) { 
+                  var elapsedTime = currentTimestamp - relativeTimestamp;
+                  var offsetRate = elapsedTime / delay;
+                  relativeTimestamp = currentTimestamp;
+                  delay -= elapsedTime;
+                  var offset = 0;
+                  for (var key in offsets) {
+                      offset = offsets[key] * offsetRate;
+                      parameters[key] += offset;
+                      offsets[key] -= offset;}}
+              else if (callback instanceof Function) { //если callback функция то
+                  callback.call(shapeInstance);
+                  if (currentTimestamp > endTimestamp) {callback = null;}}
+              else {return true;}
+          return false;}}
+      var actionHandler = null;
+      this.animate = function(changes, delay, callback) {
+          if (!(changes instanceof Object)) {changes = {}}
+          if (typeof(delay) !== 'number') {delay = 0;}
+          if (!(callback instanceof Function)) {callback = null;}
+          actionHandler = new ActionHandler(changes, delay, callback);}
+      var EventHandler = function() { //обработчик события
+          this.id = stack.length; //количество записей в массиве, сколько фигур
+          this.isHovered = context.isPointInPath(event.mouseX, event.mouseY); //true если на канвасе 
+          this.isMoved = false;
+          this.isClicked = false;
+          var EventListener = function() {
+              var stack = []; //обнуление списка фигур
+              this.set = function(listener) {stack.push(listener);} //установка 
+              this.touch = function() {
+                  for (var listener in stack) {stack[listener].call(shapeInstance, event);}}}
+          this.mouseover = new EventListener();
+          this.mouseout = new EventListener();
+          this.mousemove = new EventListener();
+          this.mousedown = new EventListener();
+          this.mouseup = new EventListener();
+          this.mouseclick = new EventListener();
+          this.setListener = function(type, listener) {
+              switch (type) {
+                  case 'mouseover': this.mouseover.set(listener); break;
+                  case 'mouseout': this.mouseout.set(listener); break;
+                  case 'mousemove': this.mousemove.set(listener); break;
+                  case 'mousedown': this.mousedown.set(listener); break;
+                  case 'mouseup': this.mouseup.set(listener); break;
+                  case 'mouseclick': this.mouseclick.set(listener); break;}}}
+      var eventHandler = new EventHandler();
+      this.addEventListener = function(type, listener) { //добавление события, если событие не строка возвращаем ничего,если нет функции создаем пустую функцию, и добавляем событие в обработчик событий
+          if (typeof(type) !== 'string') {return;}
+          if (!(listener instanceof Function)) {listener = new Function();}
+          eventHandler.setListener(type, listener);}
+      this.click = function(mouseclick) { //нажатие
+          if (!(mouseclick instanceof Function)) {mouseclick = new Function();}
+          this.addEventListener('mouseclick', mouseclick);}
+      this.hover = function(mouseover, mouseout) { //перетаскивание
+          if (!(mouseover instanceof Function)) {mouseover = new Function();}
+          if (!(mouseout instanceof Function)) {mouseout = new Function();}
+          this.addEventListener('mouseover', mouseover);
+          this.addEventListener('mouseout', mouseout);}
+      var appendShape = function() { //добавление 
+          if (activeTargets[eventHandler.id] === undefined) {activeTargets[eventHandler.id] = eventHandler;}}
+      var removeShape = function() { //удаление
+          if (activeTargets[eventHandler.id] !== undefined) {delete activeTargets[eventHandler.id];}}
+      var updateActiveTargets = function() {
+          if (context.isPointInPath(event.mouseX, event.mouseY)) {appendShape();}
+          else {removeShape();}}
+      this.draw = function() { //отрисовка, 
+          if (actionHandler instanceof ActionHandler && actionHandler.handle()) {actionHandler = null;}
+          draw.apply(context, toArray(parameters));
+          updateActiveTargets();}}
+      /*******************/
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
