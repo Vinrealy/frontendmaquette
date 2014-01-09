@@ -39,7 +39,7 @@
         window.msRequestAnimationFrame     ||
         function(callback){window.setTimeout(callback, 1000 / 60);};
       })();
-    var Shape = function(){}
+    var Shape = function(draw, par){}
       /**/
     return {
       init: function() {document.body.appendChild(canvas);},
@@ -49,7 +49,7 @@
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {parameters = {}}
         var shape = new Shape(draw, par); //создание новой фигуры
-        stack.push(shape); //добавление в ???
+        stack.push(shape); //добавление в массив объекты фигур фигур
         return shape;
       },
       fullrun: function() {fullScreenRun();},
