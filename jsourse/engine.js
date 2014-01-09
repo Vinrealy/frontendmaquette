@@ -1,5 +1,6 @@
 (function(){
   var engine = (function (window, document) {
+    var stack = [];
     var context = null; //проверка поддерживает ли браузер canvas
     if(!document.createElement('canvas').getContext){
       throw new Error('Your browser is not support HTML5 Canvas.');
@@ -47,7 +48,8 @@
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
       redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
       fullrun: function() {fullScreenRun();},
-      fullcancel: function() {fullScreenCancel();}
+      fullcancel: function() {fullScreenCancel();},
+      addshape: function(){}
     };
   })(window, document);
   engine.init();
