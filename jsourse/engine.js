@@ -92,7 +92,7 @@
           actionHandler = new ActionHandler(changes, delay, callback);}
       var EventHandler = function() { //обработчик события
           this.id = stack.length; //количество записей в массиве, сколько фигур
-          this.isHovered = context.isPointInPath(event.mouseX, event.mouseY); //true если на канвасе 
+          this.isHovered = ctx.isPointInPath(event.mouseX, event.mouseY); //true если на канвасе 
           this.isMoved = false;
           this.isClicked = false;
           var EventListener = function() {
