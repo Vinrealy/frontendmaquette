@@ -212,6 +212,6 @@
   engine.redraw();
   engine.fullrun();
   engine.addshape(function(){
-    earc(80, 100, 56, 3/4 * Math.PI, 1/4 * Math.PI, true);
+    engine.earc(80, 100, 56, 3/4 * Math.PI, 1/4 * Math.PI, true);
   },{});
 })();
