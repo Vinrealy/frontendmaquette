@@ -15,7 +15,7 @@
       canvas.height = document.documentElement.clientHeight;
       var ctx = canvas.getContext('2d');}
       /************************/
-    var event = {mouseX: 0, mouseY: 0, mouseClicked: false, mouseButton: 0, currentTarget: null, relatedTarget: null} //флаги координат мыши, кликали или нет, какой кнопкой мыши нажали, текущего элемента, связанных элементов
+    /*var event = {mouseX: 0, mouseY: 0, mouseClicked: false, mouseButton: 0, currentTarget: null, relatedTarget: null} //флаги координат мыши, кликали или нет, какой кнопкой мыши нажали, текущего элемента, связанных элементов
     window.addEventListener('mousemove', function(e) { //событие перетаскивание мыши, провека координат мыши и текущей ли элемент, отсылка координат
       var x = e.clientX - e.currentTarget.offsetLeft + window.pageXOffset; 
       var y = e.clientY - e.currentTarget.offsetTop + window.pageYOffset;
@@ -27,7 +27,7 @@
       event.mouseButton = e.button;}, false);
     window.addEventListener('mouseup', function(e) { //событие отпуска любой кнопки мыши, отсылка номера кнопки
       event.mouseClicked = false;
-      event.mouseButton = e.button;}, false);
+      event.mouseButton = e.button;}, false);*/
       /*********************/
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
@@ -49,7 +49,7 @@
         function(callback){window.setTimeout(callback, 1000 / 60);};
       })();
       /*********************/
-    var activeTargets = {}
+    /*var activeTargets = {}
     var toArray = function(object) {
       var array = [];
       for (var key in object) {array.push(object[key]);}
@@ -194,14 +194,14 @@
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function() {handleEvents();engine.clean();for (var stage in stack) {stack[stage].draw();}requestAnimFrame(arguments.callee);},
-      addshape: function(draw, par){
+      redraw: function() {handleEvents();engine.clean();/*for (var stage in stack) {stack[stage].draw();}*/requestAnimFrame(arguments.callee);console.log(arguments)},
+      /*addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {par = {}}
         var shape = new Shape(draw, par); //создание новой фигуры
         stack.push(shape); //добавление в массив объекты фигур фигур
         return shape;
-      },
+      },*/
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
       /**/
