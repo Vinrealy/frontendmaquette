@@ -184,13 +184,17 @@
       if (!event.mouseClicked && originalTarget !== undefined) {
           if (!!originalTarget) {originalTarget.isClicked = false;}
           originalTarget = undefined;}}
-          
+  var handleEvents = function() { //запуск и отслеживание событие
+      updateTarget();
+      listenHover();
+      listenMove();
+      listenClick();}        
           
       /*******************/
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
+      redraw: function() {handleEvents();engine.clean();for (var stage in stack) {stack[stage].draw();}requestAnimFrame(arguments.callee);},
       addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {par = {}}
