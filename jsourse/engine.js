@@ -39,7 +39,7 @@
         window.msRequestAnimationFrame     ||
         function(callback){window.setTimeout(callback, 1000 / 60);};
       })();
-      
+    var Shape = function(){}
       /**/
     return {
       init: function() {document.body.appendChild(canvas);},
@@ -47,7 +47,13 @@
       redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
-      addshape: function(){}
+      addshape: function(draw, par){
+        if(!(draw instanceof Function)) {draw = new Function();}
+        if(!(par instanceof Object)) {parameters = {}}
+        var shape = new Shape(draw, par); //создание новой фигуры
+        stack.push(shape); //добавление в ???
+        return shape;
+      }
     };
   })(window, document);
   engine.init();
