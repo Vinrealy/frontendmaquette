@@ -45,18 +45,23 @@
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
       redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
-      fullrun: function() {fullScreenRun();},
-      fullcancel: function() {fullScreenCancel();},
       addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {parameters = {}}
         var shape = new Shape(draw, par); //создание новой фигуры
         stack.push(shape); //добавление в ???
         return shape;
-      }
+      },
+      fullrun: function() {fullScreenRun();},
+      fullcancel: function() {fullScreenCancel();},
+      /**/
+      earc: function(x,y,r,sA,eA,a){ctx.arc(x,y,r,sA,eA,a);}
     };
   })(window, document);
   engine.init();
   engine.redraw();
   engine.fullrun();
+  engine.addshape(function(){
+    earc(80, 100, 56, 3/4 * Math.PI, 1/4 * Math.PI, true);
+  },{});
 })();
