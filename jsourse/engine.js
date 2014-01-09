@@ -22,7 +22,6 @@
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
       canvas.style.height = window.innerHeight+"px";}, false);
-    var olo = function (){console.log('olo');}
     var fullScreenRun = function (){
       if(canvas.requestFullscreen) {canvas.requestFullscreen();console.log('fSR: el');}
       else if(canvas.webkitrequestFullscreen) {canvas.webkitRequestFullscreen();console.log('fSR: wk');}
@@ -31,7 +30,7 @@
       if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
       else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
       else if(document.mozRequestFullscreen){document.mozRequestFullScreen();}console.log('fSC: mz');}
-    var requestAnimFrame = (function(){console.log('l');
+    var requestAnimFrame = (function(){
       return window.requestAnimationFrame  ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame    ||
@@ -45,10 +44,8 @@
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
       redraw: function() {engine.clean();requestAnimFrame(arguments.callee);},
-      ala: function(x, y, x1, y1) {console.log('ala');},
-      ili: function() {olo();},
-      fullrun: function() {fullScreenRun();console.log('fSR!');}/*,
-      fullcancel: function() {fullScreenCancel();}*/
+      fullrun: function() {fullScreenRun();},
+      fullcancel: function() {fullScreenCancel();}
     };
   })(window, document);
   engine.init();
