@@ -138,6 +138,54 @@
           if (actionHandler instanceof ActionHandler && actionHandler.handle()) {actionHandler = null;}
           draw.apply(context, toArray(parameters));
           updateActiveTargets();}}
+      var pastTarget = null;
+  var updateTarget = function() {
+      var targets = toArray(activeTargets).sort(function(a, b) {
+          if (a.id < b.id) {return -1;}
+          else if (a.id > b.id) {return 1;}
+          return 0;});
+      var currentTarget = targets.pop() || null;
+      if (event.currentTarget !== currentTarget) {
+          pastTarget = event.currentTarget;
+          event.currentTarget = currentTarget;}
+      var relatedTarget = targets.pop() || null;
+      if (event.relatedTarget !== relatedTarget) {event.relatedTarget = relatedTarget;}}
+//--------------------------------------------------------------------------------------------------
+  var listenHover = function() { // новедение
+      if (!event.mouseClicked && event.currentTarget !== pastTarget) {
+          if (pastTarget !== null && pastTarget.isHovered) {
+              pastTarget.isHovered = false;
+              pastTarget.mouseout.touch();}
+          if (event.currentTarget !== null && !event.currentTarget.isHovered) {
+              event.currentTarget.isHovered = true;
+              event.currentTarget.mouseover.touch();}}}
+//--------------------------------------------------------------------------------------------------
+  var originalTarget = undefined;
+  var listenMove = function() { // перетаскивание
+      if (event.currentTarget !== null && event.currentTarget.isMoved) {
+          event.currentTarget.isMoved = false;
+          if (event.mouseClicked) {
+              if (!!originalTarget) {originalTarget.mousemove.touch();}}
+          else {event.currentTarget.mousemove.touch();}}}
+//--------------------------------------------------------------------------------------------------
+  var originalButton = 0;
+  var listenClick = function() { // нажатие
+      if (event.mouseClicked && originalTarget === undefined) {
+          originalButton = event.mouseButton;
+          originalTarget = event.currentTarget;}
+      if (event.currentTarget !== null) {
+          if (event.mouseClicked && !event.currentTarget.isClicked) {
+              event.currentTarget.isClicked = true;
+              if (event.currentTarget == originalTarget) {event.currentTarget.mousedown.touch();}}
+          else if (!event.mouseClicked && event.currentTarget.isClicked) {
+              event.currentTarget.isClicked = false;
+              event.currentTarget.mouseup.touch();
+              if (event.mouseButton === originalButton && event.currentTarget === originalTarget) {event.currentTarget.mouseclick.touch();}}}
+      if (!event.mouseClicked && originalTarget !== undefined) {
+          if (!!originalTarget) {originalTarget.isClicked = false;}
+          originalTarget = undefined;}}
+          
+          
       /*******************/
     return {
       init: function() {document.body.appendChild(canvas);},
