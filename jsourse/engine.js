@@ -205,7 +205,7 @@
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
       /**/
-      earc: function(x,y,r,sA,eA,a){ctx.arc(x,y,r,sA,eA,a);}
+      earc: function(x,y,r,sA,eA,a){stack.push(shapectx.arc(x,y,r,sA,eA,a));}
     };
   })(window, document);
   engine.init();
