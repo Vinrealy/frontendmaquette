@@ -23,16 +23,14 @@
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
       canvas.style.height = window.innerHeight+"px";}, false);
-    var fullScreenRun = function (){
-      (canvas.requestFullscreen || canvas.webkitrequestFullscreen || canvas.mozRequestFullscreen)();
-      /*if(canvas.requestFullscreen) {canvas.requestFullscreen();console.log('fSR: el');}
+    var fullScreenRun = function (element){
+      if(canvas.requestFullscreen) {canvas.requestFullscreen();console.log('fSR: el');}
       else if(canvas.webkitrequestFullscreen) {canvas.webkitRequestFullscreen();console.log('fSR: wk');}
-      else if(canvas.mozRequestFullscreen) {canvas.mozRequestFullScreen();console.log('fSR: mz');}*/}
+      else if(canvas.mozRequestFullscreen) {canvas.mozRequestFullScreen();console.log('fSR: mz');}}
     var fullSreenCancel = function (){
-      (document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullscreen)();
-      /*if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
+      if(document.requestFullscreen) {document.requestFullscreen();console.log('fSC: el');}
       else if(document.webkitRequestFullscreen){document.webkitRequestFullscreen();console.log('fSC: wk');}
-      else if(document.mozRequestFullscreen){document.mozRequestFullScreen();console.log('fSC: mz');}*/}
+      else if(document.mozRequestFullscreen){document.mozRequestFullScreen();console.log('fSC: mz');}}
     var requestAnimFrame = (function(){
       return window.requestAnimationFrame  ||
         window.webkitRequestAnimationFrame ||
