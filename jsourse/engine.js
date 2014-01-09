@@ -194,7 +194,7 @@
     return {
       init: function() {document.body.appendChild(canvas);},
       clean: function() {ctx.clearRect(0, 0, canvas.width, canvas.height);}, //очищение canvas
-      redraw: function() {handleEvents();engine.clean();/*for (var stage in stack) {stack[stage].draw();}*/requestAnimFrame(arguments.callee);console.log(arguments)},
+      redraw: function() {/*handleEvents();*/engine.clean();/*for (var stage in stack) {stack[stage].draw();}*/requestAnimFrame(arguments.callee);console.log(arguments)},
       /*addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {par = {}}
