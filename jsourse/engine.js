@@ -198,9 +198,9 @@
       /*addshape: function(draw, par){
         if(!(draw instanceof Function)) {draw = new Function();}
         if(!(par instanceof Object)) {par = {}}
-        var shape = new Shape(draw, par); //создание новой фигуры
-        stack.push(shape); //добавление в массив объекты фигур фигур
-        return shape;
+        //var shape = new Shape(draw, par); //создание новой фигуры
+        //stack.push(shape); //добавление в массив объекты фигур фигур
+        //return shape;
       },*/
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
@@ -211,7 +211,7 @@
   engine.init();
   engine.redraw();
   engine.fullrun();
-  engine.addshape(function(){
+  //engine.addshape(function(){
     engine.earc(80, 100, 56, 3/4 * Math.PI, 1/4 * Math.PI, true);
-  },{});
+  //},{});
 })();
