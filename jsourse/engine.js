@@ -195,7 +195,7 @@
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
       /**/
-      earc: function(x,y,r,sA,eA,a){stack.push(ctx.arc(x,y,r,sA,eA,a));console.log(stack);}
+      earc: function(x,y,r,sA,eA,a){stack.push(ctx.arc(x,y,r,sA,eA,a));for (var stage in stack) {console.log(stack[stage]);}}
     };
   })(window, document);
   engine.init();
