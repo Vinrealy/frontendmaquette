@@ -1,8 +1,7 @@
 (function(){
   var engine = (function (window, document) {
     var stack = [];
-    var context = null; //проверка поддерживает ли браузер canvas
-    if(!document.createElement('canvas').getContext){
+    if(!document.createElement('canvas').getContext){//проверка поддерживает ли браузер canvas
       throw new Error('Your browser is not support HTML5 Canvas.');
       document.body.innerHTML = error.message;
       return;}
@@ -15,19 +14,10 @@
       canvas.height = document.documentElement.clientHeight;
       var ctx = canvas.getContext('2d');}
       /************************/
-    /*var event = {mouseX: 0, mouseY: 0, mouseClicked: false, mouseButton: 0, currentTarget: null, relatedTarget: null} //флаги координат мыши, кликали или нет, какой кнопкой мыши нажали, текущего элемента, связанных элементов
-    window.addEventListener('mousemove', function(e) { //событие перетаскивание мыши, провека координат мыши и текущей ли элемент, отсылка координат
-      var x = e.clientX - e.currentTarget.offsetLeft + window.pageXOffset; 
-      var y = e.clientY - e.currentTarget.offsetTop + window.pageYOffset;
-      if (event.currentTarget !== null && (x - event.mouseX !== 0 || y - event.mouseY !== 0)) {event.currentTarget.isMoved = true;}
-      event.mouseX = x;
-      event.mouseY = y;}, false);
-    window.addEventListener('mousedown', function(e) { //событие нажатия любой кнопки мыши, отсылка номера кнопки
-      event.mouseClicked = true;
-      event.mouseButton = e.button;}, false);
-    window.addEventListener('mouseup', function(e) { //событие отпуска любой кнопки мыши, отсылка номера кнопки
-      event.mouseClicked = false;
-      event.mouseButton = e.button;}, false);*/
+    
+    window.addEventListener('mousemove', function(e) {}, false);
+    window.addEventListener('mousedown', function(e) {}, false);
+    window.addEventListener('mouseup', function(e) {}, false);
       /*********************/
     window.addEventListener('resize', function(e){
       canvas.style.width = document.documentElement.offsetWidth+"px";
