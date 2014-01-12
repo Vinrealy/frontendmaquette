@@ -195,7 +195,7 @@
       fullrun: function() {fullScreenRun();},
       fullcancel: function() {fullScreenCancel();},
       /**/
-      earc: function(x,y,r,sA,eA,a){stack.push(ctx.arc(x,y,r,sA,eA,a));}
+      earc: function(x,y,r,sA,eA,a){stack.push(ctx.arc(x,y,r,sA,eA,a));}console.log(stack);
     };
   })(window, document);
   engine.init();
